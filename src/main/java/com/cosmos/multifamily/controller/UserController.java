@@ -31,32 +31,4 @@ public class UserController {
         return userService.findUserByUserid(userId);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @GetMapping("/members/{userid}")//testid
-    public User getMemberInfo(@PathVariable String userid) {
-        logger.info("============================");
-        if(userid == null){
-            logger.info("null");
-        } else {
-            logger.info("not null"+ userid);
-        }
-
-        User user = userService.findUserByUserid(userid);
-        return user;
-    }
-
-
 }
