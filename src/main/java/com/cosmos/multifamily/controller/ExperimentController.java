@@ -21,7 +21,7 @@ public class ExperimentController {
         this.experimentService = experimentService;
     }
 
-    @RequestMapping(value = "multifamily/experiment", method = RequestMethod.POST)
+    @RequestMapping(value = "experiments", method = RequestMethod.POST)
     public void saveExperimentResult(@Valid() @RequestBody ExperimentRequestDto experimentRequestDto) {
         experimentService.saveExperimentResult(experimentRequestDto);
     }
