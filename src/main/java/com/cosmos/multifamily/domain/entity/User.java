@@ -1,5 +1,6 @@
 package com.cosmos.multifamily.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -34,15 +36,14 @@ public class User {
     @Column(nullable = false)
     private String count = "0";
 
-    public User(String userid, String pw) {
-        this.userid = userid;
-        this.pw = pw;
+    @Transient
+    private String response;
+
+    public User(String _userid, String _pw, String _name, String _mobile) {
+        this.userid = _userid;
+        this.pw = _pw;
+        this.name = _name;
+        this.mobile = _mobile;
     }
 
-    public User(String userid, String pw, String name, String mobile) {
-        this.userid = userid;
-        this.pw = pw;
-        this.name = name;
-        this.mobile = mobile;
-    }
 }

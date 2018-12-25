@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *UserDetailsServiceImpl
+ *db에 저장된 사용자정보를 조회하는 클래스
  *보완 예정
  */
 @Service

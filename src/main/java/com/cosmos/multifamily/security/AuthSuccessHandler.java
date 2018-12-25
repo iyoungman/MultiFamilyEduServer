@@ -38,6 +38,7 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         Object principal = authentication.getPrincipal();
         UserDetails userDetails = (UserDetails)principal;
         User user = userRepository.findUserByUserid(userDetails.getUsername());
+        user.setResponse("1");
         logger.info(user.getUserid());
 
         response.getWriter().print(gson.toJson(user));

@@ -1,5 +1,6 @@
 package com.cosmos.multifamily.service;
 
+import com.cosmos.multifamily.domain.dto.UserSignupRequestDto;
 import com.cosmos.multifamily.domain.entity.User;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserService {
 
-    void signupUser(User user);
+    void signupUser(UserSignupRequestDto userSignupRequestDto);
 
     User findUserByUserid(String userId);
+
+    void findAll();
 }

@@ -1,5 +1,6 @@
 package com.cosmos.multifamily.service.impl;
 
+import com.cosmos.multifamily.domain.dto.UserSignupRequestDto;
 import com.cosmos.multifamily.domain.entity.User;
 import com.cosmos.multifamily.repository.UserRepository;
 import com.cosmos.multifamily.service.UserService;
@@ -7,6 +8,8 @@ import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 /**
  * UserServiceImpl
@@ -22,17 +25,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void signupUser(User user) throws ServiceException {
+    public void signupUser(UserSignupRequestDto userSignupRequestDto) throws ServiceException {
         logger.info("==============signupUser Start!!=================");
-        userRepository.saveAndFlush(user);
+        Object user = userSignupRequestDto.toEntity();
+
+        logger.info("ttttttttttttttttttttttttttt" + user.toString());
+        //userRepository.saveAndFlush(user);
     }
 
     @Override
     public User findUserByUserid(String userid) throws ServiceException {
         logger.info("==============findUserByUserid Start!!=================");
-        User user = userRepository.findUserByUserid(userid);
-        return user;
+        Object user = userRepository.findUserByUserid(userid);
+
+        logger.info("ttttttttttttttttttttttttttt" + user.toString());
+        System.out.println("sssssssssssssssssssssssssssssss" + user.toString());
+        User user1 = userRepository.findUserByUserid(userid);
+        return user1;
     }
+
+    @Override
+    public void findAll() throws ServiceException {
+
+        ArrayList objectList = userRepository.findAll();
+        //Object obj = objectList.get(0);
+        logger.info("ttttttttttttttttttttttttttt" + objectList.get(0).toString());
+       // l//ogger.info("nnnnnnnnnnnnnnnnnnnnnnnnnnn" + objectList.get(0));
+    }
+
 
 
 }

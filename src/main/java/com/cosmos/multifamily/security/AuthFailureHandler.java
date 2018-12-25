@@ -1,6 +1,8 @@
 package com.cosmos.multifamily.security;
 
 
+import com.cosmos.multifamily.domain.entity.User;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
@@ -19,14 +21,22 @@ import java.io.IOException;
 @Component
 public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     private Logger logger = LoggerFactory.getLogger(AuthFailureHandler.class);
+    private Gson gson;
+
+    public AuthFailureHandler(Gson gson) {
+        this.gson = gson;
+    }
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
         logger.info("==============AuthFailureHandler Start!!=================");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        //response를 json 형태로 결과값 전달
-        response.getWriter().print("{\"success\": false}");
+
+        User user = new User("fail","fail","fail","fail");
+        user.setResponse("0");
+
+        response.getWriter().print(gson.toJson(user));
         response.getWriter().flush();
     }
 }
