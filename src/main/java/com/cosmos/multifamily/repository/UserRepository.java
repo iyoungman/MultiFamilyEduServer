@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *UserRepository
  *
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
 
     User findUserByUserid(String userid);
 

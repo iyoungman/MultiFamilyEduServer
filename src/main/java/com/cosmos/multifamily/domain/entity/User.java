@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  *User
@@ -14,11 +15,9 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 public class User {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Id
+    @Column(nullable = false)
     private String userid;
 
     @Column(nullable = false)
@@ -33,8 +32,8 @@ public class User {
     @Column(nullable = false)
     private String level = "1";
 
-    @Column(nullable = false)
-    private String count = "0";
+//    @OneToMany(mappedBy = "user")
+//    private List<WordPassInfo> wordPassInfo;
 
     @Transient
     private String response;

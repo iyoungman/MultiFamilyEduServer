@@ -22,6 +22,7 @@ public class UserController {
 
     @RequestMapping(value = "users/signup", method = RequestMethod.POST)
     public void signupUser(@RequestBody UserSignupRequestDto userSignupRequestDto) {
+        logger.info("================stsrt");
         userService.signupUser(userSignupRequestDto);
     }
 

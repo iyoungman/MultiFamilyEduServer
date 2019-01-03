@@ -16,15 +16,23 @@ spring:
   profiles: local
   datasource:
     # data: classpath:data-h2.sql # 시작할때 실행시킬 script
-    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?verifyServerCertificate=false&useSSL=true
+    #    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?verifyServerCertificate=false&useSSL=true
+    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?useSSL=false&serverTimezone=UTC
     username: root
     password: 11111111
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update #컴파일하면 JPA 자동실행되는 옵션-변경분 반영
-  h2:
-    console:
+  http:
+    converters:
+      preferred-json-mapper: jackson
+    encoding:
+      charset: UTF-8
       enabled: true
+      force: true
+#  h2:
+#    console:
+#      enabled: true
 
