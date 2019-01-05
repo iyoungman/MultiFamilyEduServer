@@ -43,7 +43,6 @@ public class FileServiceImpl implements FileService {
         String filePath = "C:\\test\\" + level + "\\" + fileName;
 //        String filePath = "/usr/local/tomcat-8.0.53/webapps/wavefile/" + fileName;
         File file = new File(filePath);
-
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
         return ResponseEntity.ok()

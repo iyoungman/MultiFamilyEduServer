@@ -22,7 +22,6 @@ public class UserController {
 
     @RequestMapping(value = "users/signup", method = RequestMethod.POST)
     public void signupUser(@RequestBody UserSignupRequestDto userSignupRequestDto) {
-        logger.info("================stsrt");
         userService.signupUser(userSignupRequestDto);
     }
 
@@ -30,10 +29,5 @@ public class UserController {
     public User findUserByUserid(@PathVariable("userid") String userId) {
         return userService.findUserByUserid(userId);
     }
-
-  /*  @GetMapping("/test")
-    public void test() {
-        userService.findAll();
-    }*/
-
+    
 }

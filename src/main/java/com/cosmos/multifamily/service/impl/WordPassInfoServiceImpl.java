@@ -6,11 +6,9 @@ import com.cosmos.multifamily.domain.entity.WordPassInfo;
 import com.cosmos.multifamily.repository.WordPassInfoRepository;
 import com.cosmos.multifamily.repository.WordRepository;
 import com.cosmos.multifamily.service.WordPassInfoService;
-import org.hibernate.internal.util.collections.BoundedConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;

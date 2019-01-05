@@ -26,25 +26,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void signupUser(UserSignupRequestDto userSignupRequestDto) throws ServiceException {
-        logger.info("==============signupUser Start!!=================");
         User user = userSignupRequestDto.toEntity();
-        logger.info("ttttttttttttttttttttttttttt" + user.toString());
         userRepository.saveAndFlush(user);
     }
 
     @Override
     public User findUserByUserid(String userid) throws ServiceException {
-        logger.info("==============findUserByUserid Start!!=================");
-        User user1 = userRepository.findUserByUserid(userid);
-        return user1;
+        User user = userRepository.findUserByUserid(userid);
+        return user;
     }
 
     @Override
     public void findAll() throws ServiceException {
         ArrayList objectList = userRepository.findAll();
-        //Object obj = objectList.get(0);
-        logger.info("ttttttttttttttttttttttttttt" + objectList.get(0).toString());
-       // l//ogger.info("nnnnnnnnnnnnnnnnnnnnnnnnnnn" + objectList.get(0));
     }
 
 

@@ -1,6 +1,5 @@
 package com.cosmos.multifamily.domain.dto;
 
-import com.cosmos.multifamily.domain.entity.Word;
 import lombok.Data;
 
 import java.util.List;
