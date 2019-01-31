@@ -31,12 +31,9 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
         logger.info("==============AuthFailureHandler Start!!=================");
+
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-
-        User user = new User("fail","fail","fail","fail");
-        user.setResponse("0");
-
-        response.getWriter().print(gson.toJson(user));
+//        response.getWriter().print(gson.toJson(user));
         response.getWriter().flush();
     }
 }

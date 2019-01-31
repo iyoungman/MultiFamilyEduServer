@@ -21,9 +21,6 @@ public class WordPassInfo {
 
     @Column(name = "userid")
     private String user;
-    /*@ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "userid")
-    private User user;*/
 
     public WordPassInfo(Word word, String user) {
         this.word = word;

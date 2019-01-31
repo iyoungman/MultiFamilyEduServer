@@ -29,5 +29,11 @@ public class UserController {
     public User findUserByUserid(@PathVariable("userid") String userId) {
         return userService.findUserByUserid(userId);
     }
-    
+
+    @GetMapping("/users/{userid}/level/{level}")// level = nextlevel , 최종 level 처리는 클라이언트에서
+    public void convertToNextDay(@PathVariable("userid") String userId, @PathVariable("level") String level) {
+        userService.convertToNextDay(userId,level);
+    }
+
+
 }

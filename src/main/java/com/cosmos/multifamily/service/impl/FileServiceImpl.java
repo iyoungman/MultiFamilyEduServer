@@ -40,8 +40,8 @@ public class FileServiceImpl implements FileService {
     @Override
     public ResponseEntity<InputStreamResource> downloadFileByName(String level, String fileName) throws Exception {
         logger.info("==============download Start!!=================");
-        String filePath = "C:\\test\\" + level + "\\" + fileName;
-//        String filePath = "/usr/local/tomcat-8.0.53/webapps/wavefile/" + fileName;
+//        String filePath = "C:\\test\\" + level + "\\" + fileName;
+        String filePath = "/usr/local/tomcat-8.0.53/webapps/wavefile/" + fileName;
         File file = new File(filePath);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 

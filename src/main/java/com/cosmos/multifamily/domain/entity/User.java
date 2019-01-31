@@ -32,9 +32,6 @@ public class User {
     @Column(nullable = false)
     private String level = "1";
 
-//    @OneToMany(mappedBy = "user")
-//    private List<WordPassInfo> wordPassInfo;
-
     @Transient
     private String response;
 

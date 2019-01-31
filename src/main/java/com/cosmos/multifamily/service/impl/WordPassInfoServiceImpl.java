@@ -20,8 +20,7 @@ import java.util.Map;
  */
 @Service
 public class WordPassInfoServiceImpl implements WordPassInfoService {
-
-    Logger logger = LoggerFactory.getLogger(WordPassInfoServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(WordPassInfoServiceImpl.class);
     private final WordPassInfoRepository wordPassInfoRepository;
     private final WordRepository wordRepository;
 
@@ -35,7 +34,6 @@ public class WordPassInfoServiceImpl implements WordPassInfoService {
         List<String> words = new ArrayList<>();
         List<String> wordsPass = new ArrayList<>();
         Map wordsPassInfo = new HashMap<String, Boolean>();
-
         try {
             words = wordRepository.getWordsByWordlevel(selectLevel);
             wordsPass = wordPassInfoRepository.getWordPassInfoBySelectLevelAndUserid(selectLevel, userid);
@@ -64,7 +62,7 @@ public class WordPassInfoServiceImpl implements WordPassInfoService {
             Word word = wordRepository.findWordByWordname(wordname);
             if(word != null) {
                 WordPassInfo wordPassInfo = new WordPassInfo(word, userid);
-                wordPassInfoRepository.save(wordPassInfo);
+                wordPassInfoRepository.saveAndFlush(wordPassInfo);
                 map.put(wordname, "합격");
             } else {
                 throw new Exception();

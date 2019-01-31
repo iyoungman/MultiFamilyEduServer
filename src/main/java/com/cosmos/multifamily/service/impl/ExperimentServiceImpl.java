@@ -4,6 +4,8 @@ import com.cosmos.multifamily.domain.dto.ExperimentRequestDto;
 import com.cosmos.multifamily.domain.entity.Experiment;
 import com.cosmos.multifamily.repository.ExperimentRepository;
 import com.cosmos.multifamily.service.ExperimentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ExperimentServiceImpl implements ExperimentService {
-
+    private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
     private ExperimentRepository experimentRepository;
 
     public ExperimentServiceImpl(ExperimentRepository experimentRepository) {

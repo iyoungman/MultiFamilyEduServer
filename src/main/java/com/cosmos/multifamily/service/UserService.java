@@ -15,5 +15,6 @@ public interface UserService {
 
     User findUserByUserid(String userId);
 
-    void findAll();
+    void convertToNextDay(String userid, String level);
+
 }
