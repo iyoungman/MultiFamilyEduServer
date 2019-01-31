@@ -1,27 +1,27 @@
 package com.cosmos.multifamily.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 /**
- *User
- *사용자
- * unique : userid
+ * Created by YoungMan on 2018-12-19.
  */
-@Data
+
 @Entity
-@AllArgsConstructor
+@Getter
+@Setter
 public class User {
 
     @Id
     @Column(nullable = false)
-    private String userid;
+    private String userId;
 
     @Column(nullable = false)
-    private String pw;
+    private String userPw;
 
     @Column(nullable = false)
     private String name;
@@ -32,14 +32,21 @@ public class User {
     @Column(nullable = false)
     private String level = "1";
 
+    @OneToMany(mappedBy = "user")
+    private List<WordPassInfo> wordPassInfo;
+
     @Transient
     private String response;
 
-    public User(String _userid, String _pw, String _name, String _mobile) {
-        this.userid = _userid;
-        this.pw = _pw;
-        this.name = _name;
-        this.mobile = _mobile;
+    public User() {
+    }
+
+    @Builder
+    public User(String userId, String userPw, String name, String mobile) {
+        this.userId = userId;
+        this.userPw = userPw;
+        this.name = name;
+        this.mobile = mobile;
     }
 
 }

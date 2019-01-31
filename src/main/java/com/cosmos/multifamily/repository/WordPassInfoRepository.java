@@ -8,10 +8,11 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 /**
- * Created by youngman on 2019-01-01.
+ * Created by YoungMan on 2019-01-01.
  */
+
 public interface WordPassInfoRepository extends JpaRepository<WordPassInfo, Long> {
 
     @Query(value = "select word.wordname from WordPassInfo wordPassInfo, Word word where wordPassInfo.word = word.wordname and  word.wordlevel = :selectLevel and wordPassInfo.user = :userid")
-    List<String> getWordPassInfoBySelectLevelAndUserid(@Param("selectLevel") String selectLevel, @Param("userid") String userid);
+    List<String> getWordPassInfoBySelectLevelAndUserId(@Param("selectLevel") String selectLevel, @Param("userId") String userId);
 }

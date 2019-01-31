@@ -5,18 +5,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- *FileController
- *파일 주고받는 클래스
+ * Created by YoungMan on 2018-12-19.
  */
-@Controller
+
+@RestController
 public class FileController {
     private Logger logger = LoggerFactory.getLogger(FileController.class);
-    private FileService fileService;
+    private final FileService fileService;
 
     public FileController(FileService fileService) {
         this.fileService = fileService;
@@ -29,7 +29,7 @@ public class FileController {
 
     @GetMapping("downloads/level/{level}/filename/{filename}")
     public ResponseEntity<InputStreamResource> downloadFileByFileName(@PathVariable("level") String level, @PathVariable("filename") String fileName) throws Exception {
-            return fileService.downloadFileByName(level, fileName);
+            return fileService.downloadFileByName(fileName);
     }
 
 }

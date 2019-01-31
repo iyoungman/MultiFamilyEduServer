@@ -1,31 +1,19 @@
 spring:
-  profiles:
-    active: local # 기본 환경 선택
-  devtools:
-    livereload:
-      enabled: true
-    freemarker:
-      cache: false
-    debug: true
   output:
     ansi:
       enabled: always
-
----
-spring:
-  profiles: local
-  datasource:
-    # data: classpath:data-h2.sql # 시작할때 실행시킬 script
-    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?verifyServerCertificate=false&useSSL=true
-    #    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?useSSL=false&serverTimezone=UTC
-    username: root
-    password: 11111111
-    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    show-sql: true
     hibernate:
-      ddl-auto: update #컴파일하면 JPA 자동실행되는 옵션-변경분 반영
+      ddl-auto: update
+    show-sql: true
+    database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+#    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/test_multi?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 111111
+    driver-class-name: com.mysql.cj.jdbc.Driver
   http:
     converters:
       preferred-json-mapper: jackson
@@ -33,7 +21,10 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-#  h2:
-#    console:
-#      enabled: true
 
+logging:
+  level:
+    root: info
+
+server:
+  port: 8090

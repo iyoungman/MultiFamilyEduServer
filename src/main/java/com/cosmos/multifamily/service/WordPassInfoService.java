@@ -6,12 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Map;
 
 /**
- * Created by youngman on 2019-01-01.
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Transactional
 public interface WordPassInfoService {
 
-    WordInfoResponseDto getWordPassInfoDtoBySelectLevelAndUserid(String selectLevel, String userid);
+    WordInfoResponseDto getBySelectLevelAndUserId(String selectLevel, String userId);
 
-    Map<String, String> setWordPassInfo(String userid, String wordname);
+    Map<String, String> setWordPassInfo(String userId, String wordName);
 }

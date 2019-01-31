@@ -5,17 +5,14 @@ import com.cosmos.multifamily.domain.entity.User;
 import com.cosmos.multifamily.exception.UserDefineException;
 import com.cosmos.multifamily.repository.UserRepository;
 import com.cosmos.multifamily.service.UserService;
-import org.hibernate.annotations.SQLInsert;
-import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 /**
- * UserServiceImpl
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Service
 public class UserServiceImpl implements UserService {
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -28,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void signupUser(UserSignupRequestDto userSignupRequestDto) {
         try {
-            User existingUser = userRepository.findUserByUserid(userSignupRequestDto.getUserid());
+            User existingUser = userRepository.findUserByUserId(userSignupRequestDto.getUserId());
             if (existingUser == null) {
                 User user = userSignupRequestDto.toEntity();
                 userRepository.save(user);
@@ -41,10 +38,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByUserid(String userid) {
-        User user = null;
+    public User findUserByUserId(String userId) {
+        User user;
+
         try {
-            user = userRepository.findUserByUserid(userid);
+            user = userRepository.findUserByUserId(userId);
         } catch (Exception e) {
             throw new UserDefineException("Error");
         }
@@ -52,9 +50,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void convertToNextDay(String userid, String level) {
-        User user = userRepository.findUserByUserid(userid);
+    public void convertToNextDay(String userId, String level) {
+        User user = userRepository.findUserByUserId(userId);
         user.setLevel(level);
-        userRepository.saveAndFlush(user);
+        userRepository.save(user);
     }
 }

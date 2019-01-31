@@ -1,8 +1,11 @@
 package com.cosmos.multifamily.service.impl;
 
 import com.cosmos.multifamily.domain.dto.WordInfoResponseDto;
+import com.cosmos.multifamily.domain.entity.User;
 import com.cosmos.multifamily.domain.entity.Word;
 import com.cosmos.multifamily.domain.entity.WordPassInfo;
+import com.cosmos.multifamily.exception.UserDefineException;
+import com.cosmos.multifamily.repository.UserRepository;
 import com.cosmos.multifamily.repository.WordPassInfoRepository;
 import com.cosmos.multifamily.repository.WordRepository;
 import com.cosmos.multifamily.service.WordPassInfoService;
@@ -16,36 +19,41 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by youngman on 2019-01-01.
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Service
 public class WordPassInfoServiceImpl implements WordPassInfoService {
     private Logger logger = LoggerFactory.getLogger(WordPassInfoServiceImpl.class);
     private final WordPassInfoRepository wordPassInfoRepository;
     private final WordRepository wordRepository;
+    private final UserRepository userRepository;
 
-    public WordPassInfoServiceImpl(WordPassInfoRepository wordPassInfoRepository, WordRepository wordRepository) {
+    public WordPassInfoServiceImpl(WordPassInfoRepository wordPassInfoRepository, WordRepository wordRepository, UserRepository userRepository) {
         this.wordPassInfoRepository = wordPassInfoRepository;
         this.wordRepository = wordRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
-    public WordInfoResponseDto getWordPassInfoDtoBySelectLevelAndUserid(String selectLevel, String userid) {
+    public WordInfoResponseDto getBySelectLevelAndUserId(String selectLevel, String userId) {
         List<String> words = new ArrayList<>();
         List<String> wordsPass = new ArrayList<>();
-        Map wordsPassInfo = new HashMap<String, Boolean>();
+        Map<String, String> wordsPassInfo = new HashMap<>();
+
         try {
-            words = wordRepository.getWordsByWordlevel(selectLevel);
-            wordsPass = wordPassInfoRepository.getWordPassInfoBySelectLevelAndUserid(selectLevel, userid);
+            words = wordRepository.getWordsByLevel(selectLevel);
+            wordsPass = wordPassInfoRepository.getWordPassInfoBySelectLevelAndUserId(selectLevel, userId);
             wordsPassInfo = convertWordsToWordsPassInfo(words, wordsPass);
         } catch (Exception e) {
-            logger.info("error" + e.toString());
+            throw new UserDefineException(e.getMessage());
         }
         return new WordInfoResponseDto(words, wordsPassInfo);
     }
 
     private Map<String, String> convertWordsToWordsPassInfo(List<String> words, List<String> wordsPass) {
-        Map wordPassInfo = new HashMap<String, String>();
+        Map<String, String> wordPassInfo = new HashMap<>();
+
         for (String word : words) {
             if (wordsPass.contains(word)) {
                 wordPassInfo.put(word, "합격");
@@ -56,19 +64,26 @@ public class WordPassInfoServiceImpl implements WordPassInfoService {
         return wordPassInfo;
     }
 
-    public Map<String, String> setWordPassInfo(String userid, String wordname) {
+    @Override
+    public Map<String, String> setWordPassInfo(String userId, String wordName) {
         Map<String, String> map = new HashMap<>();
+
         try {
-            Word word = wordRepository.findWordByWordname(wordname);
-            if(word != null) {
-                WordPassInfo wordPassInfo = new WordPassInfo(word, userid);
-                wordPassInfoRepository.saveAndFlush(wordPassInfo);
-                map.put(wordname, "합격");
+            Word word = wordRepository.findWordByName(wordName);
+            User user = userRepository.findUserByUserId(userId);
+
+            if (word != null) {
+                WordPassInfo wordPassInfo = WordPassInfo.builder()
+                        .word(word)
+                        .user(user)
+                        .build();
+                wordPassInfoRepository.save(wordPassInfo);
+                map.put(wordName, "합격");
             } else {
-                throw new Exception();
+                throw new UserDefineException("Word Null Error");
             }
         } catch (Exception e) {
-            logger.info("error" + e.toString());
+            throw new UserDefineException(e.getMessage());
         }
         return map;
     }

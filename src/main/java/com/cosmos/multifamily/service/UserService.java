@@ -5,16 +5,16 @@ import com.cosmos.multifamily.domain.entity.User;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *UserService
- *
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Transactional
 public interface UserService {
 
     void signupUser(UserSignupRequestDto userSignupRequestDto);
 
-    User findUserByUserid(String userId);
+    User findUserByUserId(String userId);
 
-    void convertToNextDay(String userid, String level);
+    void convertToNextDay(String userId, String level);
 
 }

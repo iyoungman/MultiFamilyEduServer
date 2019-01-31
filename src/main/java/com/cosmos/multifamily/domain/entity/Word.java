@@ -1,6 +1,7 @@
 package com.cosmos.multifamily.domain.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,15 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
 
-@Data
+/**
+ * Created by YoungMan on 2019-01-01.
+ */
+
 @Entity
+@Getter
+@Setter
 public class Word {
     @Id
-    @Column(name = "wordname")
-    private String wordname;
+    @Column(name = "name")
+    private String name;
 
     @Column(nullable = false)
-    private String wordlevel;
+    private String level;
 
     @OneToMany(mappedBy = "word")
     private List<WordPassInfo> wordPassInfo;

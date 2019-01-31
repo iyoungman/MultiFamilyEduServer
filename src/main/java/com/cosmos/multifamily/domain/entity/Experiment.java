@@ -1,15 +1,19 @@
 package com.cosmos.multifamily.domain.entity;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * Created by youngman on 2018-12-19.
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Entity
-@Data
+@Getter
+@Setter
 public class Experiment {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -23,18 +27,22 @@ public class Experiment {
     @NotEmpty
     private String word;
 
-    @Column(nullable = false)
+    @Column(name = "area_score", nullable = false)
     @NotEmpty
-    private int areascore;
+    private int areaScore;
 
-    @Column(nullable = false)
+    @Column(name = "shape_score", nullable = false)
     @NotEmpty
-    private int shapescore;
+    private int shapeScore;
 
-    public Experiment(String user, String word, int areascore, int shapescore) {
+    public Experiment() {
+    }
+
+    @Builder
+    public Experiment(String user, String word, int areaScore, int shapeScore) {
         this.user = user;
         this.word = word;
-        this.areascore = areascore;
-        this.shapescore = shapescore;
+        this.areaScore = areaScore;
+        this.shapeScore = shapeScore;
     }
 }

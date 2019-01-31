@@ -16,13 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *AuthFailureHandler
- *로그인 성공시 처리
+ * Created by YoungMan on 2019-01-01.
  */
+
 @Component
 public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     private Logger logger = LoggerFactory.getLogger(AuthSuccessHandler.class);
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     private Gson gson;
 
     public AuthSuccessHandler(UserRepository userRepository, Gson gson) {
@@ -33,14 +33,11 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-        logger.info("==============AuthSuccessHandler Start!!=================");
         response.setStatus(HttpServletResponse.SC_OK);
         Object principal = authentication.getPrincipal();
-        UserDetails userDetails = (UserDetails)principal;
-        User user = userRepository.findUserByUserid(userDetails.getUsername());
+        UserDetails userDetails = (UserDetails) principal;
+        User user = userRepository.findUserByUserId(userDetails.getUsername());
         user.setResponse("1");
-        logger.info(user.getUserid());
-
         response.getWriter().print(gson.toJson(user));
         response.getWriter().flush();
     }

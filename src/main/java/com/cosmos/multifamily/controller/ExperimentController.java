@@ -10,19 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 /**
- * Created by youngman on 2018-12-19.
+ * Created by YoungMan on 2018-12-19.
  */
+
 @RestController
 public class ExperimentController {
 
-    private ExperimentService experimentService;
+    private final ExperimentService experimentService;
 
     public ExperimentController(ExperimentService experimentService) {
         this.experimentService = experimentService;
     }
 
     @RequestMapping(value = "experiments", method = RequestMethod.POST)
-    public void saveExperimentResult(@Valid() @RequestBody ExperimentRequestDto experimentRequestDto) {
+    public void saveExperimentResult(@RequestBody ExperimentRequestDto experimentRequestDto) {
         experimentService.saveExperimentResult(experimentRequestDto);
     }
 }

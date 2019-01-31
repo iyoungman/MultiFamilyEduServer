@@ -9,12 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by youngman on 2018-12-19.
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Service
 public class ExperimentServiceImpl implements ExperimentService {
     private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
-    private ExperimentRepository experimentRepository;
+    private final ExperimentRepository experimentRepository;
 
     public ExperimentServiceImpl(ExperimentRepository experimentRepository) {
         this.experimentRepository = experimentRepository;

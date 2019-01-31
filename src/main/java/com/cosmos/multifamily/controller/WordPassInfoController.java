@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
- * Created by youngman on 2019-01-01.
+ * Created by YoungMan on 2019-01-01.
  */
+
 @RestController
 public class WordPassInfoController {
     private Logger logger = LoggerFactory.getLogger(WordPassInfoController.class);
-    private WordPassInfoService wordPassInfoService;
+    private final WordPassInfoService wordPassInfoService;
 
     public WordPassInfoController(WordPassInfoService wordPassInfoService) {
         this.wordPassInfoService = wordPassInfoService;
@@ -24,12 +25,12 @@ public class WordPassInfoController {
 
     @GetMapping("/wordinfo/level/{level}/userid/{userid}")
     public WordInfoResponseDto getWordPassInfoDtoBySelectLevelAndUserid(@PathVariable("level") String level, @PathVariable("userid") String userid) {
-        return wordPassInfoService.getWordPassInfoDtoBySelectLevelAndUserid(level, userid);
+        return wordPassInfoService.getBySelectLevelAndUserId(level, userid);
     }
 
     @GetMapping("/wordinfo/userid/{userid}/wordname/{wordname}")
-    public Map<String, String> setWordPassInfo(@PathVariable("userid") String userid, @PathVariable("wordname") String wordname) {
-        return wordPassInfoService.setWordPassInfo(userid, wordname);
+    public Map<String, String> setWordPassInfo(@PathVariable("userid") String userId, @PathVariable("wordname") String wordName) {
+        return wordPassInfoService.setWordPassInfo(userId, wordName);
     }
 
 }

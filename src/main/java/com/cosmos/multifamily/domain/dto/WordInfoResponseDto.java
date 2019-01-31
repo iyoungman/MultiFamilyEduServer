@@ -1,20 +1,25 @@
 package com.cosmos.multifamily.domain.dto;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by youngman on 2019-01-01.
+ * Created by YoungMan on 2019-01-01.
  */
-@Data
-public class WordInfoResponseDto {
-    private List<String> wordlist;
-    private Map<String, String> wordpassinfo;
 
-    public WordInfoResponseDto(List<String> wordlist, Map<String, String> wordpassinfo) {
-        this.wordlist = wordlist;
-        this.wordpassinfo = wordpassinfo;
+@Getter
+@Setter
+public class WordInfoResponseDto {
+    private List<String> wordList;
+    private Map<String, String> wordPassInfo;
+
+    @Builder
+    public WordInfoResponseDto(List<String> wordList, Map<String, String> wordPassInfo) {
+        this.wordList = wordList;
+        this.wordPassInfo = wordPassInfo;
     }
 }

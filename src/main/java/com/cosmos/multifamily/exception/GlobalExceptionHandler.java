@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.UnexpectedTypeException;
 
 /**
- *GlobalException
- *보완예정
+ * Created by YoungMan on 2019-01-01.
  */
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

@@ -8,9 +8,9 @@ import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 /**
- *MultifamilyApplication
- *
+ * Created by YoungMan on 2018-12-19.
  */
+
 @SpringBootApplication
 @EnableJpaAuditing
 public class MultifamilyApplication {

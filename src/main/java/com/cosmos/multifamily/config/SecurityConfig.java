@@ -14,9 +14,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 /**
- *SecurityConfig
- *보완 예정
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -42,8 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
         .formLogin()//로그인 설정
-                .usernameParameter("userid")
-                .passwordParameter("pw")
+                .usernameParameter("userId")
+                .passwordParameter("userPw")
                 .loginProcessingUrl("/users/signin")
                 .defaultSuccessUrl("/")
                 .successHandler(authSuccessHandler)
@@ -62,7 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(userDetailsService).passwordEncoder(NoOpPasswordEncoder.getInstance());
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 
 }

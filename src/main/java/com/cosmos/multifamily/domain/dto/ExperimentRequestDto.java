@@ -1,25 +1,36 @@
 package com.cosmos.multifamily.domain.dto;
 
 import com.cosmos.multifamily.domain.entity.Experiment;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 
 /**
- * Created by youngman on 2018-12-19.
+ * Created by YoungMan on 2018-12-19.
  */
-@Data
+
+@Getter
+@Setter
 public class ExperimentRequestDto {
     @NotEmpty
     private String user;
+
     @NotEmpty
     private String word;
+
     @NotEmpty
-    private int areascore;
+    private int areaScore;
+
     @NotEmpty
-    private int shapescore;
+    private int shapeScore;
 
     public Experiment toEntity() {
-        return new Experiment(user, word, areascore, shapescore);
+        return Experiment.builder()
+                .user(user)
+                .word(word)
+                .areaScore(areaScore)
+                .shapeScore(shapeScore)
+                .build();
     }
 }

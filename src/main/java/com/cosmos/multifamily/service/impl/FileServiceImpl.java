@@ -14,40 +14,46 @@ import java.io.FileInputStream;
 import java.util.Random;
 
 /**
- *FileServiceImpl
- *
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Service
 public class FileServiceImpl implements FileService {
     private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
+    private final String WINDOW_PATH = "C:\\test\\";
+    private final String LINUX_PATH = "/usr/local/tomcat-8.0.53/webapps/wavefile/";
 
     @Override
-    public ResponseEntity<InputStreamResource> downloadFileByLevel(String level) throws Exception{
-        logger.info("==============download Start!!=================");
-        String filePath = "C:\\test\\" + level + "\\";
-        File file = new File(filePath);
-        File[] fileList = file.listFiles();
-        Random rand = new Random();
-        File randFile = fileList[rand.nextInt(fileList.length)];
-        InputStreamResource resource = new InputStreamResource(new FileInputStream(randFile));
-
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + randFile.getName())
-                .contentType(MediaType.APPLICATION_OCTET_STREAM).contentLength(randFile.length())
-                .body(resource);
-    }
-
-    @Override
-    public ResponseEntity<InputStreamResource> downloadFileByName(String level, String fileName) throws Exception {
-        logger.info("==============download Start!!=================");
-//        String filePath = "C:\\test\\" + level + "\\" + fileName;
-        String filePath = "/usr/local/tomcat-8.0.53/webapps/wavefile/" + fileName;
-        File file = new File(filePath);
+    public ResponseEntity<InputStreamResource> downloadFileByLevel(String level) throws Exception {
+        String filePath = WINDOW_PATH + level + "\\";
+        File file = getRandFile(filePath);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getName())
                 .contentType(MediaType.APPLICATION_OCTET_STREAM).contentLength(file.length())
                 .body(resource);
+    }
+
+    @Override
+    public ResponseEntity<InputStreamResource> downloadFileByName(String fileName) throws Exception {
+        String filePath = LINUX_PATH + fileName;
+        File file = new File(filePath);
+        logger.info("==============File Download Start=================");
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getName())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM).contentLength(file.length())
+                .body(resource);
+    }
+
+    private File getRandFile(String filePath) {
+        File file = new File(filePath);
+        File[] fileList = file.listFiles();
+        Random rand = new Random();
+        File randFile = fileList[rand.nextInt(fileList.length)];
+
+        return randFile;
     }
 }

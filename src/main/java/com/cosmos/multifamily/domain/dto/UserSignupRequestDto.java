@@ -5,19 +5,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *UserSignupRequestDto
- *회원가입Dto
+ * Created by YoungMan on 2018-12-19.
  */
+
 @Getter
 @Setter
 public class UserSignupRequestDto {
 
-    private String userid;
-    private String pw;
+    private String userId;
+    private String userPw;
     private String name;
     private String mobile;
 
     public User toEntity() {
-        return new User(userid, pw, name, mobile);
+        return User.builder()
+                .userId(userId)
+                .userPw(userPw)
+                .name(name)
+                .mobile(mobile)
+                .build();
     }
 }

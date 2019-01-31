@@ -1,28 +1,35 @@
 package com.cosmos.multifamily.domain.entity;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 /**
- * Created by youngman on 2019-01-01.
+ * Created by YoungMan on 2019-01-01.
  */
 
-@Data
 @Entity
+@Getter
+@Setter
 public class WordPassInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "wordname")
     private Word word;
 
-    @Column(name = "userid")
-    private String user;
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public WordPassInfo(Word word, String user) {
+    public WordPassInfo() {
+    }
+
+    @Builder
+    public WordPassInfo(Word word, User user) {
         this.word = word;
         this.user = user;
     }

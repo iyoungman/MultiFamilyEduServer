@@ -8,13 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * UserController
- * 사용자와 관련된 클래스
+ * Created by YoungMan on 2018-12-19.
  */
+
 @RestController
 public class UserController {
-    private UserService userService;
     private Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -27,13 +27,12 @@ public class UserController {
 
     @GetMapping("/users/{userid}")
     public User findUserByUserid(@PathVariable("userid") String userId) {
-        return userService.findUserByUserid(userId);
+        return userService.findUserByUserId(userId);
     }
 
-    @GetMapping("/users/{userid}/level/{level}")// level = nextlevel , 최종 level 처리는 클라이언트에서
+    @GetMapping("/users/{userid}/level/{level}")
     public void convertToNextDay(@PathVariable("userid") String userId, @PathVariable("level") String level) {
         userService.convertToNextDay(userId,level);
     }
-
 
 }

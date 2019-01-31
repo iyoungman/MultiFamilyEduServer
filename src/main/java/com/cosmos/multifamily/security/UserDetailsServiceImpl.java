@@ -10,26 +10,24 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- *UserDetailsServiceImpl
- *db에 저장된 사용자정보를 조회하는 클래스
- *보완 예정
+ * Created by YoungMan on 2019-01-01.
  */
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private UserRepository userRepository;
     private Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+    private final UserRepository userRepository;
 
     public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-    public org.springframework.security.core.userdetails.User loadUserByUsername(String userid) throws UsernameNotFoundException {
-        User newUser = userRepository.findUserByUserid(userid);
-        logger.info("newUser:" + newUser.getUserid());
+    public org.springframework.security.core.userdetails.User loadUserByUsername(String userId) throws UsernameNotFoundException {
+        User newUser = userRepository.findUserByUserId(userId);
         if (newUser == null) {
-            throw new UsernameNotFoundException(userid);
+            throw new UsernameNotFoundException(userId);
         }
-        return new org.springframework.security.core.userdetails.User(newUser.getUserid(), newUser.getPw(), AuthorityUtils.createAuthorityList("USER"));
+        return new org.springframework.security.core.userdetails.User(newUser.getUserId(), newUser.getUserPw(), AuthorityUtils.createAuthorityList("USER"));
     }
 }
