@@ -1,12 +1,11 @@
 package com.cosmos.multifamily.repository;
 
-import com.cosmos.multifamily.domain.entity.Word;
+import com.cosmos.multifamily.model.entity.Word;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by YoungMan on 2019-01-01.
@@ -14,7 +13,7 @@ import java.util.Optional;
 
 public interface WordRepository extends JpaRepository<Word, String> {
 
-    @Query(value = "select word.wordname from Word word where word.wordlevel = :selectLevel")
+    @Query(value = "select word.name from Word word where word.level = :selectLevel")
     List<String> getWordsByLevel(@Param("selectLevel") String selectLevel);
 
     Word findWordByName(String name);

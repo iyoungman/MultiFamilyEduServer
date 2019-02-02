@@ -1,7 +1,7 @@
 package com.cosmos.multifamily.controller;
 
-import com.cosmos.multifamily.domain.dto.UserSignupRequestDto;
-import com.cosmos.multifamily.domain.entity.User;
+import com.cosmos.multifamily.model.dto.UserSignupRequestDto;
+import com.cosmos.multifamily.model.entity.User;
 import com.cosmos.multifamily.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

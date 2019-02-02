@@ -1,7 +1,7 @@
 package com.cosmos.multifamily.service;
 
-import com.cosmos.multifamily.domain.dto.UserSignupRequestDto;
-import com.cosmos.multifamily.domain.entity.User;
+import com.cosmos.multifamily.model.dto.UserSignupRequestDto;
+import com.cosmos.multifamily.model.entity.User;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

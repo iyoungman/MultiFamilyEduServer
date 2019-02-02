@@ -1,6 +1,6 @@
-package com.cosmos.multifamily.domain.dto;
+package com.cosmos.multifamily.model.dto;
 
-import com.cosmos.multifamily.domain.entity.Experiment;
+import com.cosmos.multifamily.model.entity.Experiment;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package com.cosmos.multifamily.domain.dto;
+package com.cosmos.multifamily.model.dto;
 
 import lombok.Builder;
 import lombok.Getter;

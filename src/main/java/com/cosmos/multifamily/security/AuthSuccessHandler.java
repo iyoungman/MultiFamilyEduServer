@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.security;
 
-import com.cosmos.multifamily.domain.entity.User;
+import com.cosmos.multifamily.model.entity.User;
 import com.cosmos.multifamily.repository.UserRepository;
 import com.google.gson.Gson;
 import org.slf4j.Logger;

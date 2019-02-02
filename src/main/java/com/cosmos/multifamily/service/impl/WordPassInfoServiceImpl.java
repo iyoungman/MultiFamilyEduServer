@@ -1,9 +1,9 @@
 package com.cosmos.multifamily.service.impl;
 
-import com.cosmos.multifamily.domain.dto.WordInfoResponseDto;
-import com.cosmos.multifamily.domain.entity.User;
-import com.cosmos.multifamily.domain.entity.Word;
-import com.cosmos.multifamily.domain.entity.WordPassInfo;
+import com.cosmos.multifamily.model.dto.WordInfoResponseDto;
+import com.cosmos.multifamily.model.entity.User;
+import com.cosmos.multifamily.model.entity.Word;
+import com.cosmos.multifamily.model.entity.WordPassInfo;
 import com.cosmos.multifamily.exception.UserDefineException;
 import com.cosmos.multifamily.repository.UserRepository;
 import com.cosmos.multifamily.repository.WordPassInfoRepository;
@@ -43,7 +43,7 @@ public class WordPassInfoServiceImpl implements WordPassInfoService {
 
         try {
             words = wordRepository.getWordsByLevel(selectLevel);
-            wordsPass = wordPassInfoRepository.getWordPassInfoBySelectLevelAndUserId(selectLevel, userId);
+            wordsPass = wordPassInfoRepository.getBySelectLevelAndUserId(selectLevel, userId);
             wordsPassInfo = convertWordsToWordsPassInfo(words, wordsPass);
         } catch (Exception e) {
             throw new UserDefineException(e.getMessage());

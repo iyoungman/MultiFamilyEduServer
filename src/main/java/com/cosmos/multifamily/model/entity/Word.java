@@ -1,4 +1,4 @@
-package com.cosmos.multifamily.domain.entity;
+package com.cosmos.multifamily.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;

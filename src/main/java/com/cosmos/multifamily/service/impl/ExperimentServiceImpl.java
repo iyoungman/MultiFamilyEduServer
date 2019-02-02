@@ -1,7 +1,7 @@
 package com.cosmos.multifamily.service.impl;
 
-import com.cosmos.multifamily.domain.dto.ExperimentRequestDto;
-import com.cosmos.multifamily.domain.entity.Experiment;
+import com.cosmos.multifamily.model.dto.ExperimentRequestDto;
+import com.cosmos.multifamily.model.entity.Experiment;
 import com.cosmos.multifamily.repository.ExperimentRepository;
 import com.cosmos.multifamily.service.ExperimentService;
 import org.slf4j.Logger;

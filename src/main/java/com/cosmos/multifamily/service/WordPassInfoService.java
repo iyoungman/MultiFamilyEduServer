@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.service;
 
-import com.cosmos.multifamily.domain.dto.WordInfoResponseDto;
+import com.cosmos.multifamily.model.dto.WordInfoResponseDto;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;

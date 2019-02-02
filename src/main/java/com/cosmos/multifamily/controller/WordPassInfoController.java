@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.controller;
 
-import com.cosmos.multifamily.domain.dto.WordInfoResponseDto;
+import com.cosmos.multifamily.model.dto.WordInfoResponseDto;
 import com.cosmos.multifamily.service.WordPassInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

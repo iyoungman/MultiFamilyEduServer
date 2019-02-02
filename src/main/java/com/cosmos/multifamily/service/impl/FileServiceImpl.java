@@ -39,7 +39,6 @@ public class FileServiceImpl implements FileService {
     public ResponseEntity<InputStreamResource> downloadFileByName(String fileName) throws Exception {
         String filePath = LINUX_PATH + fileName;
         File file = new File(filePath);
-        logger.info("==============File Download Start=================");
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
         return ResponseEntity.ok()

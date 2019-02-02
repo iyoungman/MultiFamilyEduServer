@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.service;
 
-import com.cosmos.multifamily.domain.dto.ExperimentRequestDto;
+import com.cosmos.multifamily.model.dto.ExperimentRequestDto;
 
 /**
  * Created by YoungMan on 2018-12-19.

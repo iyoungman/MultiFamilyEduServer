@@ -1,7 +1,7 @@
 package com.cosmos.multifamily.service.impl;
 
-import com.cosmos.multifamily.domain.dto.UserSignupRequestDto;
-import com.cosmos.multifamily.domain.entity.User;
+import com.cosmos.multifamily.model.dto.UserSignupRequestDto;
+import com.cosmos.multifamily.model.entity.User;
 import com.cosmos.multifamily.exception.UserDefineException;
 import com.cosmos.multifamily.repository.UserRepository;
 import com.cosmos.multifamily.service.UserService;
