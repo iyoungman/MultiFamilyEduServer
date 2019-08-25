@@ -1,10 +1,10 @@
-package com.cosmos.multifamily.model.entity;
+package com.cosmos.multifamily.domain;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +13,6 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
 public class User {
 
     @Id
@@ -33,7 +32,7 @@ public class User {
     private String level = "1";
 
     @OneToMany(mappedBy = "user")
-    private List<WordPassInfo> wordPassInfo;
+    private List<WordPassInfo> wordPassInfo = new ArrayList<>();
 
     @Transient
     private String response;

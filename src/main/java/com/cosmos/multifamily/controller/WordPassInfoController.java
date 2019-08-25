@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.controller;
 
-import com.cosmos.multifamily.model.dto.WordInfoResponseDto;
+import com.cosmos.multifamily.dto.WordInfoResponseDto;
 import com.cosmos.multifamily.service.WordPassInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +24,14 @@ public class WordPassInfoController {
     }
 
     @GetMapping("/wordinfo/level/{level}/userid/{userid}")
-    public WordInfoResponseDto getWordPassInfoDtoBySelectLevelAndUserid(@PathVariable("level") String level, @PathVariable("userid") String userid) {
+    public WordInfoResponseDto getWordPassInfoDtoBySelectLevelAndUserid(@PathVariable("level") String level,
+                                                                        @PathVariable("userid") String userid) {
         return wordPassInfoService.getBySelectLevelAndUserId(level, userid);
     }
 
     @GetMapping("/wordinfo/userid/{userid}/wordname/{wordname}")
-    public Map<String, String> setWordPassInfo(@PathVariable("userid") String userId, @PathVariable("wordname") String wordName) {
+    public Map<String, String> setWordPassInfo(@PathVariable("userid") String userId,
+                                               @PathVariable("wordname") String wordName) {
         return wordPassInfoService.setWordPassInfo(userId, wordName);
     }
 

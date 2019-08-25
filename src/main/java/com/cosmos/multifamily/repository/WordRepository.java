@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.repository;
 
-import com.cosmos.multifamily.model.entity.Word;
+import com.cosmos.multifamily.domain.Word;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

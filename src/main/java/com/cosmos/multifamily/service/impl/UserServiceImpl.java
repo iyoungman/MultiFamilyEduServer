@@ -1,7 +1,7 @@
 package com.cosmos.multifamily.service.impl;
 
-import com.cosmos.multifamily.model.dto.UserSignupRequestDto;
-import com.cosmos.multifamily.model.entity.User;
+import com.cosmos.multifamily.dto.UserSignupRequestDto;
+import com.cosmos.multifamily.domain.User;
 import com.cosmos.multifamily.exception.UserDefineException;
 import com.cosmos.multifamily.repository.UserRepository;
 import com.cosmos.multifamily.service.UserService;
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void signupUser(UserSignupRequestDto userSignupRequestDto) {
+    public void signUpUser(UserSignupRequestDto userSignupRequestDto) {
         try {
             User existingUser = userRepository.findUserByUserId(userSignupRequestDto.getUserId());
             if (existingUser == null) {

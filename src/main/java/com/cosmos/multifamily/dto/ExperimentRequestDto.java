@@ -1,8 +1,7 @@
-package com.cosmos.multifamily.model.dto;
+package com.cosmos.multifamily.dto;
 
-import com.cosmos.multifamily.model.entity.Experiment;
+import com.cosmos.multifamily.domain.Experiment;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -11,7 +10,6 @@ import javax.validation.constraints.NotEmpty;
  */
 
 @Getter
-@Setter
 public class ExperimentRequestDto {
     @NotEmpty
     private String user;

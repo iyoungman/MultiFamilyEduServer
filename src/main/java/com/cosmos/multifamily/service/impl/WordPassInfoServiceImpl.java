@@ -1,9 +1,9 @@
 package com.cosmos.multifamily.service.impl;
 
-import com.cosmos.multifamily.model.dto.WordInfoResponseDto;
-import com.cosmos.multifamily.model.entity.User;
-import com.cosmos.multifamily.model.entity.Word;
-import com.cosmos.multifamily.model.entity.WordPassInfo;
+import com.cosmos.multifamily.dto.WordInfoResponseDto;
+import com.cosmos.multifamily.domain.User;
+import com.cosmos.multifamily.domain.Word;
+import com.cosmos.multifamily.domain.WordPassInfo;
 import com.cosmos.multifamily.exception.UserDefineException;
 import com.cosmos.multifamily.repository.UserRepository;
 import com.cosmos.multifamily.repository.WordPassInfoRepository;

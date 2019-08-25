@@ -19,7 +19,6 @@ import java.util.Random;
 
 @Service
 public class FileServiceImpl implements FileService {
-    private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
     private final String WINDOW_PATH = "C:\\test\\";
     private final String LINUX_PATH = "/usr/local/tomcat-8.0.53/webapps/wavefile/";
 

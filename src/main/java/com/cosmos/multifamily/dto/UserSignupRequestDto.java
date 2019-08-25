@@ -1,15 +1,13 @@
-package com.cosmos.multifamily.model.dto;
+package com.cosmos.multifamily.dto;
 
-import com.cosmos.multifamily.model.entity.User;
+import com.cosmos.multifamily.domain.User;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Created by YoungMan on 2018-12-19.
  */
 
 @Getter
-@Setter
 public class UserSignupRequestDto {
 
     private String userId;

@@ -24,12 +24,13 @@ public class FileController {
 
     @GetMapping("downloads/level/{level}")
     public ResponseEntity<InputStreamResource> downloadFileByLevel(@PathVariable("level") String level) throws Exception {
-            return fileService.downloadFileByLevel(level);
+        return fileService.downloadFileByLevel(level);
     }
 
     @GetMapping("downloads/level/{level}/filename/{filename}")
-    public ResponseEntity<InputStreamResource> downloadFileByFileName(@PathVariable("level") String level, @PathVariable("filename") String fileName) throws Exception {
-            return fileService.downloadFileByName(fileName);
+    public ResponseEntity<InputStreamResource> downloadFileByFileName(@PathVariable("level") String level,
+                                                                      @PathVariable("filename") String fileName) throws Exception {
+        return fileService.downloadFileByName(fileName);
     }
 
 }

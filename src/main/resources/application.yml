@@ -9,10 +9,10 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-#    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?useSSL=false&serverTimezone=UTC
-    url: jdbc:mysql://127.0.0.1:3306/test_multi?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://yjinstance.cvfd8m7cgyo4.ap-northeast-2.rds.amazonaws.com:3306/multiculturaldb?useSSL=false&serverTimezone=UTC
+#    url: jdbc:mysql://127.0.0.1:3306/test_multi?useSSL=false&serverTimezone=UTC
     username: root
-    password: 111111
+    password: 11111111
     driver-class-name: com.mysql.cj.jdbc.Driver
   http:
     converters:
@@ -21,10 +21,6 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-
-logging:
-  level:
-    root: info
 
 server:
   port: 8093

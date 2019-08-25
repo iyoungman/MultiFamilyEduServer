@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.controller;
 
-import com.cosmos.multifamily.model.dto.ExperimentRequestDto;
+import com.cosmos.multifamily.dto.ExperimentRequestDto;
 import com.cosmos.multifamily.service.ExperimentService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

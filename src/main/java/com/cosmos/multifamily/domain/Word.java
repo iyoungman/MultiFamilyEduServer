@@ -1,12 +1,13 @@
-package com.cosmos.multifamily.model.entity;
+package com.cosmos.multifamily.domain;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,6 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
 public class Word {
     @Id
     @Column(name = "name")
@@ -25,6 +25,12 @@ public class Word {
     private String level;
 
     @OneToMany(mappedBy = "word")
-    private List<WordPassInfo> wordPassInfo;
+    private List<WordPassInfo> wordPassInfo = new ArrayList<>();
 
+    @Builder
+    public Word(String name, String level, List<WordPassInfo> wordPassInfo) {
+        this.name = name;
+        this.level = level;
+        this.wordPassInfo = wordPassInfo;
+    }
 }

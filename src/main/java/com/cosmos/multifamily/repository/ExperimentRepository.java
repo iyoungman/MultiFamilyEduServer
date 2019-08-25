@@ -1,6 +1,6 @@
 package com.cosmos.multifamily.repository;
 
-import com.cosmos.multifamily.model.entity.Experiment;
+import com.cosmos.multifamily.domain.Experiment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

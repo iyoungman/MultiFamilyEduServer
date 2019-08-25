@@ -1,8 +1,7 @@
-package com.cosmos.multifamily.model.entity;
+package com.cosmos.multifamily.domain;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -12,7 +11,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
 public class WordPassInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

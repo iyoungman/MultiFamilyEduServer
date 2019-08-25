@@ -1,7 +1,7 @@
 package com.cosmos.multifamily.controller;
 
-import com.cosmos.multifamily.model.dto.UserSignupRequestDto;
-import com.cosmos.multifamily.model.entity.User;
+import com.cosmos.multifamily.dto.UserSignupRequestDto;
+import com.cosmos.multifamily.domain.User;
 import com.cosmos.multifamily.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class UserController {
 
     @RequestMapping(value = "users/signup", method = RequestMethod.POST)
     public void signupUser(@RequestBody UserSignupRequestDto userSignupRequestDto) {
-        userService.signupUser(userSignupRequestDto);
+        userService.signUpUser(userSignupRequestDto);
     }
 
     @GetMapping("/users/{userid}")
@@ -31,8 +31,9 @@ public class UserController {
     }
 
     @GetMapping("/users/{userid}/level/{level}")
-    public void convertToNextDay(@PathVariable("userid") String userId, @PathVariable("level") String level) {
-        userService.convertToNextDay(userId,level);
+    public void convertToNextDay(@PathVariable("userid") String userId,
+                                 @PathVariable("level") String level) {
+        userService.convertToNextDay(userId, level);
     }
 
 }

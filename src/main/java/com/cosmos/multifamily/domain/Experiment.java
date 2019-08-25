@@ -1,8 +1,7 @@
-package com.cosmos.multifamily.model.entity;
+package com.cosmos.multifamily.domain;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -13,7 +12,6 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Getter
-@Setter
 public class Experiment {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
